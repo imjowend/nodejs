@@ -1,3 +1,4 @@
+// CommonJS Require Module
 const {sum} = require('./sum');
 console.log("hola")
 
