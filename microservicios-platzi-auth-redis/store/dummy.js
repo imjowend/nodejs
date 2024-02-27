@@ -56,13 +56,13 @@ const db = {
 };
 
 // Retorna la tabla de la BD
-async function list(table) {
+async function ingredient(table) {
     return db[table];
 }
 
 // Agarra la informacion de la tabla y devuelve 
 async function get(table, id) {
-    let dataCollection = await list(table);
+    let dataCollection = await ingredient(table);
     return dataCollection.filter(item => item.id === id)[0] || null;
 }
 
@@ -80,10 +80,17 @@ async function recipe(table) {
     return db[table];
 }
 
+// Agarra la informacion de la tabla y devuelve 
+async function order(table, id) {
+    let dataCollection = await recipe(table);
+    return dataCollection.filter(item => item.id === id)[0] || null;
+}
+
 module.exports = {
-    list,
+    ingredient,
     get,
     upsert,
     remove,
     recipe,
+    order,
 };
