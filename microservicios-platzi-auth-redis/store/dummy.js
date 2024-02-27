@@ -1,13 +1,13 @@
 // Creo la base de datos
 const db = {
-    // Creo la tabla 'user'
+    // Creo la tabla 'recipe'
     'recipe':[
-        {   id: '1', name: 'Asado con arroz y ensalada', description: 'Ingredientes: Carne, limon, arroz, tomate, lechuga, cebolla'   },
-        {   id: '2', name: 'Pollo con papas al horno', description: 'Ingredientes: Pollo, limon y papa'   },
-        {   id: '3', name: 'Alitas BBQ con papas fritas', description: 'Ingredientes: Pollo, ketchup y papa'   },
-        {   id: '4', name: 'Milanesa napolitana de carne con ensalada y papas fritas', description: 'Ingredientes: Carne, tomate, queso, limon y papa'   },
-        {   id: '5', name: 'Ensalada Cesar', description: 'Ingredientes: Pollo, queso y lechuga'   },
-        {   id: '6', name: 'Ensalada de pollo caprese', description: 'Ingredientes: Tomate, lechuga, pollo'   },
+        {   id: '1', name: 'Asado con arroz y ensalada', description: 'Ingredientes: Carne (3), limon (1), arroz (1), tomate (2), lechuga (1), cebolla (2)', image: 'asado-arroz-ensalada.jpg'   },
+        {   id: '2', name: 'Pollo con papas al horno', description: 'Ingredientes: Pollo (2), limon (1) y papa (2)', image: 'pollo-con-papas-al-horno.jpg'   },
+        {   id: '3', name: 'Alitas BBQ con papas fritas', description: 'Ingredientes: Pollo (1), ketchup (1) y papa (2)', image: 'alitas-bbq-con-papas.jpg'   },
+        {   id: '4', name: 'Milanesa napolitana de carne con ensalada y papas fritas', description: 'Ingredientes: Carne (2), tomate (2), queso (1), limon (1) y papa (2)', image: 'milanesa-napolitana-con-papas.jpg'   },
+        {   id: '5', name: 'Ensalada Cesar', description: 'Ingredientes: Pollo (1), queso (1) y lechuga (2', image: 'ensalada-cesar.jpg'   },
+        {   id: '6', name: 'Ensalada de pollo caprese', description: 'Ingredientes: Tomate (1), lechuga (1), pollo (1)', image: 'ensalada-de-pollo-caprese.jpg'   },
     ],
     // Creo la tabla 'ingredients'
     'ingredients':[
@@ -62,7 +62,7 @@ async function list(table) {
 
 // Agarra la informacion de la tabla y devuelve 
 async function get(table, id) {
-    let dataCollection = await list(table)
+    let dataCollection = await list(table);
     return dataCollection.filter(item => item.id === id)[0] || null;
 }
 
@@ -76,9 +76,14 @@ async function remove(table, id) {
     return true
 }
 
+async function recipe(table) {
+    return db[table];
+}
+
 module.exports = {
     list,
     get,
     upsert,
     remove,
+    recipe,
 };
