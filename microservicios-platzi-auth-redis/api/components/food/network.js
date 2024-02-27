@@ -6,6 +6,15 @@ const Controller = require('./index')
 
 const router = express.Router();
 
+router.post('/new-order', function(req, res) {
+    Controller.newOrder()
+        .then((order)=>{
+            response.success(req, res, order, httpStatus.StatusCodes.OK);
+        }).catch((err) => {
+            response.error(req, res, err.message, httpStatus.StatusCodes.INTERNAL_SERVER_ERROR);
+        });
+})
+
 router.get('/recipe', function(req, res){
     Controller.list()
         .then((list) => {

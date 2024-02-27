@@ -3,6 +3,8 @@ const INGREDIENT = 'ingredient'
 const RECIPE = 'recipe'
 const INGREDIENTS = 'ingredients'
 const DUMMYDB = '../../../store/dummy'
+import { nanoid } from 'nanoid'
+
 // aca va a exportar una funcion que leera la BD injectada que se recibe como parametro
 module.exports = function (injectedStore) {
     let store = injectedStore;
@@ -30,6 +32,11 @@ module.exports = function (injectedStore) {
         return store.order(RECIPE, id);
     }
 
+    function newOrder(){
+        order_id = nanoid()
+        
+        return store.newOrder()
+    }
     return  {
         ingredient,
         get,
